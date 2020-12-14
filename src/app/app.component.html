@@ -1,0 +1,36 @@
+<div class="container mt-2"  style="max-height: 100vh; overflow: hidden;">
+  <div class="row">
+    <div class="col-7 py-2" style="max-height: 100vh; height: 100vh; overflow: auto;">
+      <div class="d-flex alig-items-center">
+        <h2>Lista de Knights</h2>
+        <button (click)="addAKnight()" type="button" class="btn btn-outline-primary btn-sm  ms-auto">Novo Knight</button>
+      </div>
+      
+      <hr class="mt-1 mb-2">
+      <div class="form-floating mb-2">
+        <select (change)="getKnightLists()" [(ngModel)]="filter" id="knightTypeSelect" class="form-select">
+          <option [value]=null>Todos</option>
+          <option value='heroes'>Hall of Heroes</option>
+        </select>
+        <label for="knightTypeSelect">Tipo de Knights</label>
+      </div>
+      <ng-container [ngSwitch]="knightsList.length">
+        <ng-container *ngSwitchCase=0>
+          <div class="border p-2 rounded d-flex align-items-center justify-content-center" style="min-height: 200px;">
+            <h5 class="text-muted mb-0">Nenhum Knight disponivel!</h5>
+          </div>
+
+        </ng-container>
+        <ng-container *ngSwitchDefault>
+          <app-knight-card (click)="chooseKnight(knight._id)" *ngFor="let knight of knightsList" [knight] = 'knight' [escolhidoId]="escolhidoId"></app-knight-card>
+        </ng-container>
+
+      </ng-container>
+
+
+    </div>
+    <div *ngIf="createOrUpdate"  class="col-5 py-2" style="max-height: 100vh; height: 100vh; overflow: hidden;">
+      <app-knight-details (createUpdateEvent)="updateList($event)" [knightId]="escolhidoId"></app-knight-details>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<div style="cursor:pointer;" [ngClass]="{'border-primary': escolhidoId === knight._id, 'border-secondary': escolhidoId !== knight._id}" class="container-fluid border rounded py-2 mb-1">
+    <h5>{{knight.name}}</h5>
+    <hr class="my-1">
+
+    <div class="row">
+        <div class="col d-flex flex-column">
+            <p class="mb-0 small text-muted">Idade:</p>
+            <p class="mb-1">{{knight.birthday | idade}}</p>
+        </div>
+        <div class="col">
+            <p class="mb-0 small text-muted">Armas:</p>
+            <p class="mb-1">{{knight.weapons.length}}</p>
+        </div>
+        <div class="col">
+            <p class="mb-0 small text-muted">Atributo:</p>
+            <p class="mb-1">{{knight.keyAttribute}}</p>
+        </div>
+        <div class="col">
+            <p class="mb-0 small text-muted">Ataque:</p>
+            <p class="mb-1">{{knight.keyAttribute | modificadores:knight.attributes | ataque:knight.weapons}}</p>
+        </div>
+        <div class="col">
+            <p class="mb-0 small text-muted">Exp:</p>
+            <p class="mb-1">{{knight.birthday | idade | experiencia}}</p>
+        </div>
+    </div>
+
+</div>

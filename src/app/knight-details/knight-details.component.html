@@ -1,0 +1,188 @@
+
+<div class="container-fluid border border-end-0 border-top-0 border-bottom-0" style="overflow-y: auto; max-height: 100%;">
+    <div class="row">
+        <legend class="mb-0">{{knightId ? 'Editar Knight' : 'Novo Knight'}}</legend>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-12">
+            <div class="form-floating mb-2">
+                <input [disabled]="knightId ? true : false" [(ngModel)] = 'knight.name'  id="knightName" class="form-control"/>
+                <label for="knightName">Nome</label>
+            </div>
+            
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-floating mb-2">
+                <input [disabled]="knight.hallOfHeroes ? true : false" [(ngModel)] = 'knight.nickname'  id="knightNickname" class="form-control"/>
+                <label for="knightNickname">Apelido</label>
+            </div>
+            
+        </div>
+        <div class="col-6">
+            <div class="form-floating mb-2">
+                <input [disabled]="knightId ? true : false" [(ngModel)] = 'birthday' type="date"  id="knightNascimento" class="form-control"/>
+                <label for="knightNascimento">Nascimento</label>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <div class="row">
+        <legend>Atributos</legend>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="form-floating mb-2">
+                <input [disabled]="knightId ? true : false" [(ngModel)] = 'knight.attributes.strength' type="number"  min="0" max="20" id="knightStr" class="form-control form-control-sm"/>
+                <label for="knightStr">Strength</label>
+                <div class="form-check">
+                    <input [disabled]="knightId ? true : false" [(ngModel)]="knight.keyAttribute" value="strength" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        <small>Principal</small>
+                    </label>
+                </div>
+            </div>
+            
+            
+        </div>
+        <div class="col-4">
+            <div class="form-floating mb-2">
+                <input [disabled]="knightId ? true : false" [(ngModel)] = 'knight.attributes.dexterity' type="number" min="0" max="20"  id="knightDex" class="form-control form-control-sm"/>
+                <label for="knightDex">Dexterity</label>
+                <div class="form-check">
+                    <input [disabled]="knightId ? true : false" [(ngModel)]="knight.keyAttribute" value="dexterity" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        <small>Principal</small>
+                    </label>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-4">
+            <div class="form-floating mb-2">
+                <input [disabled]="knightId ? true : false" [(ngModel)] = 'knight.attributes.constitution' min="0" max="20" type="number"  id="knightCon" class="form-control form-control-sm"/>
+                <label for="knightCon">Constitution</label>
+                <div class="form-check">
+                    <input [disabled]="knightId ? true : false" [(ngModel)]="knight.keyAttribute" value="constitution" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        <small>Principal</small>
+                    </label>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <div class="form-floating mb-2">
+                <input [disabled]="knightId ? true : false" [(ngModel)] = 'knight.attributes.intelligence' min="0" max="20" type="number"  id="knightInt" class="form-control form-control-sm"/>
+                <label for="knightInt">Intelligence</label>
+                <div class="form-check">
+                    <input [disabled]="knightId ? true : false" [(ngModel)]="knight.keyAttribute" value="intelligence" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        <small>Principal</small>
+                    </label>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-4">
+            <div class="form-floating mb-2">
+                <input [disabled]="knightId ? true : false" [(ngModel)] = 'knight.attributes.wisdom' min="0" max="20" type="number"  id="knightWin" class="form-control form-control-sm"/>
+                <label for="knightWin">Wisdom</label>
+                <div class="form-check">
+                    <input [disabled]="knightId ? true : false" [(ngModel)]="knight.keyAttribute" value="wisdom" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        <small>Principal</small>
+                    </label>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-4">
+            <div class="form-floating mb-2">
+                <input [disabled]="knightId ? true : false" [(ngModel)] = 'knight.attributes.charisma' min="0" max="20" type="number"  id="knightCha" class="form-control form-control-sm"/>
+                <label  for="knightCha">Charisma</label>
+                <div class="form-check">
+                    <input [disabled]="knightId ? true : false" class="form-check-input" [(ngModel)]="knight.keyAttribute" value="charisma" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        <small>Principal</small>
+                    </label>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="row">
+        <legend>Weapons</legend>
+    </div>
+    <ng-container *ngFor = "let weapon of knight.weapons; let i = index">
+        <div class="row">
+            <div class="col-8">
+                <div class="form-floating mb-1">
+                    <input [disabled]="knightId ? true : false" [(ngModel)]="weapon.name" type="text" class="form-control form-control-sm"/>
+                    <label >Nome</label>
+                </div>
+                
+            </div>
+            <div class="col-4">
+                <div class="form-floating mb-1">
+                    <input [disabled]="knightId ? true : false" [(ngModel)]="weapon.mod" type="number" class="form-control form-control-sm"/>
+                    <label >Mod</label>
+                </div>
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8">
+                <div class="form-floating mb-1">
+                    <select [disabled]="knightId ? true : false" [(ngModel)]="weapon.attr" class="form-select form-select-sm">
+                        <option value="">Escolha...</option>
+                        <option value="strength">Strength</option>
+                        <option value='dexterity'>Dexterity</option>
+                        <option value="constitution">Constitution</option>
+                        <option value='intelligence'>Intelligence</option>
+                        <option value="wisdom">Wisdom</option>
+                        <option value='charisma'>Charisma</option>
+                    </select>
+                    <label>Atributo</label>
+                </div>
+            
+                
+            </div>
+            <div class="col-4">
+                <label >Equipada</label>
+                <div>
+                    <input [disabled]="knightId ? true : false" (change)="equipPrimary(i)" [(ngModel)]="weapon.equipped" class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+                </div>
+                
+            </div>
+        </div>
+        <hr *ngIf = "i < knight.weapons.length - 1">
+    </ng-container>
+
+    <div *ngIf="!knightId" class="row mt-2">
+        <div class="col-12 d-grid gap-2">
+            <button (click)="addNewWeapon()" class="btn btn-sm btn-outline-dark btn-block">Novo Weapon</button>
+        </div>
+
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-12 d-flex">
+            <div class=" ms-auto">
+                <button (click)="saveKnight()" class="btn btn-outline-info" *ngIf="!knightId && !knight.hallOfHeroes"> Salvar</button>
+                <button (click)="updateAknight()" class="btn btn-outline-warning" [disabled]="knight.nickname === actualNickname" *ngIf="knightId && !knight.hallOfHeroes"> Update</button>
+                <button (click)="moveKnightToHall()" *ngIf="knightId && !knight.hallOfHeroes" class="btn btn-outline-danger ms-2"> Hall of Heroes</button>
+            </div>
+            
+        </div>
+
+    </div>
+
+</div>
