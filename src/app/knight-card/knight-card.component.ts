@@ -14,7 +14,6 @@ export class KnightCardComponent implements OnInit {
   @Input() escolhidoId: string | null = null;
 
   ngOnInit(): void {
-    console.log(this.knight);
   }
 
 
